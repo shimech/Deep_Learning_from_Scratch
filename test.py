@@ -86,6 +86,20 @@ class TestFunction(unittest.TestCase):
             self.assertEqual(expected_y, actual_y)
             self.assertEqual(expected_ydiff, actual_ydiff)
 
+    def test_linear(self):
+        """
+        恒等関数のテストメソッド
+        """
+        xs = [-3.0, 0.0, 2.0, 9.0]
+        expected_ys = [-3.0, 0.0, 2.0, 9.0]
+        expected_ydiffs = [1.0, 1.0, 1.0, 1.0]
+        for x, expected_y, expected_ydiff in zip(xs, expected_ys, expected_ydiffs):
+            linear = function.Linear()
+            actual_y = linear(x)
+            actual_ydiff = linear.backward()
+            self.assertEqual(expected_y, actual_y)
+            self.assertEqual(expected_ydiff, actual_ydiff)
+
 
 if __name__ == "__main__":
     unittest.main()

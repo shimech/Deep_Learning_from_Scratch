@@ -84,3 +84,28 @@ class ReLU:
         @return 微分係数
         """
         return np.where(self.x > 0, 1.0, 0.0)
+
+
+class Linear:
+    """
+    恒等関数クラス
+    """
+
+    def __init__(self) -> None:
+        self.x = None
+
+    def __call__(self, x: float) -> float:
+        """
+        恒等関数
+        @param x: 入力
+        @return x: 出力
+        """
+        self.x = x
+        return x
+
+    def backward(self) -> float:
+        """
+        恒等関数の微分
+        @return 微分係数
+        """
+        return 1.0
