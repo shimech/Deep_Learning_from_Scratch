@@ -40,6 +40,17 @@ class TestPerceptron(unittest.TestCase):
             actual_out = perceptron.OR(x1, x2)
             self.assertEqual(expected_out, actual_out)
 
+    def test_XOR(self):
+        """
+        XORゲートのテストメソッド
+        """
+        x1s = [0, 0, 1, 1]
+        x2s = [0, 1, 0, 1]
+        expected_outs = [0, 1, 1, 0]
+        for x1, x2, expected_out in zip(x1s, x2s, expected_outs):
+            actual_out = perceptron.XOR(x1, x2)
+            self.assertEqual(expected_out, actual_out)
+
 
 if __name__ == "__main__":
     unittest.main()

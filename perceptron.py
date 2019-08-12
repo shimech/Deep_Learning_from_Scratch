@@ -45,3 +45,15 @@ def OR(x1: int, x2: int) -> int:
     else:
         out = 1
     return out
+
+
+def XOR(x1: int, x2: int) -> int:
+    """
+    XORゲート
+    @param x1, x2: 入力 (0 or 1)
+    @return out: 出力 (0 or 1)
+    """
+    s1 = NAND(x1, x2)
+    s2 = OR(x1, x2)
+    out = AND(s1, s2)
+    return out
