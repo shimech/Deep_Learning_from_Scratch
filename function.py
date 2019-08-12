@@ -60,6 +60,7 @@ class Sigmoid:
         """
         return self.y * (1.0 - self.y)
 
+
 class ReLU:
     """
     ReLU関数クラス
