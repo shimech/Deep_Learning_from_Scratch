@@ -109,3 +109,21 @@ class Linear:
         @return 微分係数
         """
         return 1.0
+
+
+class Softmax:
+    """
+    ソフトマックス関数クラス
+    """
+
+    def __init__(self) -> None:
+        self.y = None
+
+    def __call__(self, x: np.ndarray) -> np.ndarray:
+        """
+        ソフトマックス関数
+        """
+        exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
+        y = exp_x / np.sum(exp_x, axis=1, keepdims=True)
+        self.y = y
+        return y
