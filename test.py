@@ -66,8 +66,23 @@ class TestFunction(unittest.TestCase):
         expected_ys = [0.0, 0.5, 1.0, 1.0]
         expected_ydiffs = [0.0, 1.0, 0.0, 0.0]
         for x, expected_y, expected_ydiff in zip(xs, expected_ys, expected_ydiffs):
-            actual_y = function.Step()(x)
-            actual_ydiff = function.Step().backward(x)
+            step = function.Step()
+            actual_y = step(x)
+            actual_ydiff = step.backward()
+            self.assertEqual(expected_y, actual_y)
+            self.assertEqual(expected_ydiff, actual_ydiff)
+
+    def test_ReLU(self):
+        """
+        ReLU関数のテストメソッド
+        """
+        xs = [-3.0, 0.0, 2.0, 9.0]
+        expected_ys = [0.0, 0.0, 2.0, 9.0]
+        expected_ydiffs = [0.0, 0.0, 1.0, 1.0]
+        for x, expected_y, expected_ydiff in zip(xs, expected_ys, expected_ydiffs):
+            relu = function.ReLU()
+            actual_y = relu(x)
+            actual_ydiff = relu.backward()
             self.assertEqual(expected_y, actual_y)
             self.assertEqual(expected_ydiff, actual_ydiff)
 
