@@ -122,6 +122,8 @@ class Softmax:
     def __call__(self, x: np.ndarray) -> np.ndarray:
         """
         ソフトマックス関数
+        @param x: 入力
+        @return y: 出力
         """
         exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
         y = exp_x / np.sum(exp_x, axis=1, keepdims=True)
