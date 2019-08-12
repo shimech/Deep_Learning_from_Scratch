@@ -1,5 +1,6 @@
 import unittest
 import perceptron
+import function
 
 
 class TestPerceptron(unittest.TestCase):
@@ -50,6 +51,25 @@ class TestPerceptron(unittest.TestCase):
         for x1, x2, expected_out in zip(x1s, x2s, expected_outs):
             actual_out = perceptron.XOR(x1, x2)
             self.assertEqual(expected_out, actual_out)
+
+
+class TestFunction(unittest.TestCase):
+    """
+    function.pyのテストクラス
+    """
+
+    def test_step(self):
+        """
+        ステップ関数のテストメソッド
+        """
+        xs = [-3.0, 0.0, 2.0, 9.0]
+        expected_ys = [0.0, 0.5, 1.0, 1.0]
+        expected_ydiffs = [0.0, 1.0, 0.0, 0.0]
+        for x, expected_y, expected_ydiff in zip(xs, expected_ys, expected_ydiffs):
+            actual_y = function.Step()(x)
+            actual_ydiff = function.Step().backward(x)
+            self.assertEqual(expected_y, actual_y)
+            self.assertEqual(expected_ydiff, actual_ydiff)
 
 
 if __name__ == "__main__":
